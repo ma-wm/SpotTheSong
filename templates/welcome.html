@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz Results</title>
+        <!-- Import Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+        <!-- Link to custom styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+<!-- Header section -->
+<header>
+    <div class="header-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
+    </div>
+</header>
+ <!-- Welcome message, description and login -->
+<body id="welcome-page">
+    <h1>Welcome to SpotTheSong!</h1>
+    <p>Test your knowledge about your favorite songs and artists!</p>
+    <p>To start the quiz, please login with your Spotify account.</p>
+    <a href="{{ url_for('login') }}"><button>Login with Spotify</button></a>
+
+</body>
+</html>

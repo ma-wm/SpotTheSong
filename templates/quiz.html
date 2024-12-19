@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<!-- Header with Spotify Logo and Title -->
+<header>
+    <div class="header-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
+    </div>
+</header>
+
+<body>
+    <h1>Let's find out how well you know your music!</h1>
+    <!-- Quiz Questions -->
+    <form method="POST" action="{{ url_for('quiz_result') }}">
+        <fieldset>
+            <legend>Which song did you have on repeat the most this year?</legend>
+            {% for song in quiz_data.song_of_the_year %}
+                <!-- Radio button for each song -->
+                <label>
+                    <input type="radio" name="song_of_the_year" value="{{ song }}" required>
+                    {{ song }}
+                </label><br>
+            {% endfor %}
+        </fieldset>
+    
+        <fieldset>
+            <legend>Who was your most listened to artisti this past year?</legend>
+            {% for artist in quiz_data.artist_of_the_year %}
+                <label>
+                    <input type="radio" name="artist_of_the_year" value="{{ artist }}" required>
+                    {{ artist }}
+                </label><br>
+            {% endfor %}
+        </fieldset>
+    
+        <fieldset>
+            <legend>Which song you cannot get out of your head in the last month?</legend>
+            {% for song in quiz_data.song_of_last_month %}
+                <label>
+                    <input type="radio" name="song_of_last_month" value="{{ song }}" required>
+                    {{ song }}
+                </label><br>
+            {% endfor %}
+        </fieldset>
+    
+        <fieldset>
+            <legend>Can you guess which album you listened to the most this year?</legend>
+            {% for album in quiz_data.album_of_last_6_months %}
+                <label>
+                    <input type="radio" name="album_of_last_6_months" value="{{ album[0] }}" required>
+                    <img src="{{ album[2] }}" alt="album cover" style="width:50px;height:50px;">
+                    {{ album[0] }} by {{ album[1] }}
+                </label><br>
+            {% endfor %}
+        </fieldset>
+    
+        <fieldset>
+            <legend>Last but not least, what is your favorite artist of all time:</legend>
+            {% for artist in quiz_data.all_time_artist %}
+                <label>
+                    <input type="radio" name="all_time_artist" value="{{ artist }}" required>
+                    {{ artist }}
+                </label><br>
+            {% endfor %}
+        </fieldset>
+        <!-- Submit Button -->
+        <button type="submit">Submit Answers</button>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <!-- Fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- Link to custom stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<!-- Header with Spotify Logo -->
+<header>
+    <div class="header-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
+    </div>
+</header>
+
+<!-- Main content displaying quiz results -->
+<body>
+
+    <h1>Your Quiz Results!</h1>
+    
+    <h2>Let's see how you did:</h2>
+    <ul>
+         <!-- Display user guesses and correct answers for quiz questions -->
+        <li><strong>Song of the Year:</strong> 
+            <br>Your guess: {{ user_answers.song_of_the_year }}
+            <br>&nbsp;&nbsp;&nbsp;→ Correct Answer: {{ correct_answers.song_of_the_year }}
+        </li>
+        <li><strong>Artist of the Year:</strong> 
+            <br>Your guess: {{ user_answers.artist_of_the_year }}
+            <br>&nbsp;&nbsp;&nbsp;→ Correct Answer: {{ correct_answers.artist_of_the_year }}
+        </li>
+        <li><strong>Song of Last Month:</strong> 
+            <br>Your guess: {{ user_answers.song_of_last_month }}
+            <br>&nbsp;&nbsp;&nbsp;→ Correct Answer: {{ correct_answers.song_of_last_month }}
+        </li>
+        <li><strong>Album of Last Year:</strong> 
+            <br>Your guess: {{ user_answers.album_of_last_6_months }}
+            <br>&nbsp;&nbsp;&nbsp;→ Correct Answer: {{ correct_answers.album_of_last_6_months }}
+        </li>
+        <li><strong>All-Time Artist:</strong> 
+            <br>Your guess: {{ user_answers.all_time_artist }}
+            <br>&nbsp;&nbsp;&nbsp;→ Correct Answer: {{ correct_answers.all_time_artist }}
+        </li>
+    </ul>
+    
+    <!-- Display quiz score -->
+    <h3>Score: {{ score }} / 5</h3>
+
+    <h2>Check out some more stats from your listening habits!</h2>
+
+    <!-- Form to select time range for viewing listening stats -->
+    <form method="POST">
+        <label for="time_range">Select Time Frame:</label>
+
+        <select name="time_range" id="time_range">
+            <option value="short_term" {% if time_range == "short_term" %}selected{% endif %}>Last Month</option>
+            <option value="medium_term" {% if time_range == "medium_term" %}selected{% endif %}>Last Year</option>
+            <option value="long_term" {% if time_range == "long_term" %}selected{% endif %}>All Time</option>
+        </select>
+        <button type="submit">View Data</button>
+      
+    </form>
+
+    <!-- Display top tracks, artists and albums based on selected time range -->
+    <h3>Top Tracks ({{ time_range_label }}):</h3>
+    <ul>
+        {% for track in top_tracks %}
+            <li>
+                <div style="display: flex; align-items: center;">
+                    {% if track.image_url %}
+                        <img src="{{ track.image_url }}" alt="Track image" style="width: 50px; height: 50px; margin-right: 15px;">
+                    {% endif %}
+                    {{ track.name }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Top Artists ({{ time_range_label }}):</h3>
+    <ul>
+        {% for artist in top_artists %}
+            <li>
+                <div style="display: flex; align-items: center;">
+                    {% if artist.image_url %}
+                        <img src="{{ artist.image_url }}" alt="Artist image" style="width: 50px; height: 50px; margin-right: 15px;">
+                    {% endif %}
+                    {{ artist.name }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Top Albums ({{ time_range_label }}):</h3>
+    <ul>
+        {% for album in top_albums %}
+            <li>
+                <div style="display: flex; align-items: center;">
+                    {% if album[2] %}
+                        <img src="{{ album[2] }}" alt="Album image" width="100" style="margin-right: 15px;">
+                    {% endif %}
+                    <div>
+                        <strong>{{ album[0] }}</strong> by {{ album[1] }}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Logout or take the quiz again -->
+    <a href="{{ url_for('welcome') }}">Take the quiz again!</a>
+    <a href="{{ url_for('logout') }}">Logout</a> 
+</body>
+</html>

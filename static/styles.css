@@ -1,0 +1,184 @@
+/* General Body Styles */
+body {
+    font-family: 'Inter', sans-serif;  /* Modern sans-serif font for a clean look */
+    background-color: #121212;  /* Black background for a Spotify-inspired dark mode */
+    color: white; 
+    margin: 40px; 
+    padding: 0;  
+    height: 100vh;  
+}
+
+/* Header Container */
+.header-container {
+    display: flex; 
+    justify-content: center;  
+    align-items: center;  
+    gap: 3px; 
+}
+
+/* Spotify Logo */
+.spotify-logo {
+    width: 20px;  
+    height: 20px;  
+}
+
+/* Welcome Page Styles */
+/* Centers all text content on the welcome page */
+#welcome-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Center content vertically */
+    text-align: center; 
+}
+
+/* Header Styles */
+/* Defines consistent styles for all headers (h1, h2, h3) */
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif; 
+    color: #1DB954;  /* Spotify green color for headers */
+    font-weight: 600;  
+    text-align: center;  
+    margin-top: 20px 0;  
+}
+
+/* Container Styles */
+/* Set a fixed width for content and center it horizontally */
+.container {
+    width: 60%;  
+    margin: 20px auto; 
+    padding: 20px;  
+}
+
+/* Result List Styling */
+ul {
+    list-style-type: none;  /* Remove default bullet points */
+    padding: 0;  /* Remove default padding */
+    margin-top: 20px;  /* Add space above the list */
+}
+
+/* List Item Styling */
+/* Add spacing and increase font size for readability */
+ul li {
+    margin: 10px 0;  
+    font-size: 1.2em;  
+    line-height: 1.6;  
+}
+
+/* Flexbox for Content Inside List Items */
+ul li div {
+    display: flex;  
+    align-items: center;  
+}
+
+/* Album Image Styling */
+ul li img {
+    border-radius: 8px;  
+    margin-right: 15px;  
+}
+
+/* Form Styling */
+form {
+    max-width: 800px;  
+    margin: 30px auto;  
+    padding: 20px;  
+    background-color: #1a1a1a;  
+    border-radius: 10px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);  
+}
+
+/* Fieldset (Question sections) Styling */
+fieldset {
+    border: none;  /* Remove default border */
+    margin-bottom: 20px;  
+    padding: 20px;  
+    background-color: #2e2e2e;  
+    border-radius: 8px;  
+}
+
+/* Legend (Questions) Styling */
+legend {
+    font-weight: 600;  /* Bold text */
+    font-size: 1.2em;  /* Increase font size */
+    margin-bottom: 10px;  /* Space below the legend */
+    color: #1DB954;  /* Spotify green for the question text */
+}
+
+/* Label Styling */
+label {
+    display: flex;  /* Align items horizontally */
+    align-items: center;  /* Center vertically */
+    margin-bottom: 10px;  /* Space below each option */
+    font-size: 1.1em;  /* Slightly larger font size */
+    color: #ccc;  /* Light gray text for readability */
+    cursor: pointer;  /* Pointer cursor for better UX */
+}
+
+/* Radio Button Styling */
+input[type="radio"] {
+    margin-right: 10px;  /* Space between radio button and label */
+    cursor: pointer;  /* Pointer cursor for better UX */
+}
+
+/* Image Styling */
+img {
+    border-radius: 4px;  /* Slightly rounded corners */
+    margin-right: 15px;  /* Space between the image and text */
+}
+
+/* Dropdown and Button Styling */
+select, button {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px;  
+    font-size: 1em;  
+    margin-top: 10px;  
+    width: 250px;  
+    border-radius: 5px; 
+    border: 1px solid #1DB954;  
+    align-items: center;  
+}
+
+/* Spotify-Button Styling */
+button {
+    background-color: #1DB954;  
+    background-color: #1DB954;  
+    color: white;  
+    font-size: 1.1em;  
+    padding: 15px 30px;  
+    border: none;  
+    border-radius: 30px;  
+    width: auto;  
+    max-width: 200px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease;  
+    margin-top: 20px;  
+    text-align: center;  /* Center text inside button */
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #1ed760;  /* Lighter Spotify green */
+}
+
+/* Link Styling (for logout and retaking the quiz) */
+a {
+    display: block;  
+    text-align: center;  
+    margin-top: 30px;  
+    color: #1DB954;  
+    text-decoration: none;  
+    font-weight: bold;  
+}
+
+/*  Album Display */
+ul li {
+    background-color: #333;  
+    padding: 15px;  
+    border-radius: 8px;  
+    margin-bottom: 10px;  
+
+}
