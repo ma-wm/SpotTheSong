@@ -19,7 +19,7 @@
 </header>
 
 <body>
-    <h1>Let's find out how well you know your music!</h1>
+    <h1>Let's find out how well you know your music taste!</h1>
     <!-- Quiz Questions -->
     <form method="POST" action="{{ url_for('quiz_result') }}">
         <fieldset>
@@ -34,7 +34,7 @@
         </fieldset>
     
         <fieldset>
-            <legend>Who was your most listened to artisti this past year?</legend>
+            <legend>Who was your most listened to artist this past year?</legend>
             {% for artist in quiz_data.artist_of_the_year %}
                 <label>
                     <input type="radio" name="artist_of_the_year" value="{{ artist }}" required>
@@ -44,7 +44,7 @@
         </fieldset>
     
         <fieldset>
-            <legend>Which song you cannot get out of your head in the last month?</legend>
+            <legend>Which song you couldn't get out of your head this last month?</legend>
             {% for song in quiz_data.song_of_last_month %}
                 <label>
                     <input type="radio" name="song_of_last_month" value="{{ song }}" required>
@@ -65,7 +65,7 @@
         </fieldset>
     
         <fieldset>
-            <legend>Last but not least, what is your favorite artist of all time:</legend>
+            <legend>Last but not least, who is your favorite artist of all time?</legend>
             {% for artist in quiz_data.all_time_artist %}
                 <label>
                     <input type="radio" name="all_time_artist" value="{{ artist }}" required>

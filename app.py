@@ -1,33 +1,38 @@
 # Import the necessary 
+
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from flask import Flask, redirect, render_template, request, session, url_for
 import random
 
+
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Change to a secure secret key
-app.config["SESSION_COOKIE_NAME"] = "your_session_cookie"  # Optional
+app.secret_key = "brazil_zil_zil" 
+app.config["SESSION_COOKIE_NAME"] = "mary's_cookie_session"  
 
 # Set up Spotify authentication
 sp_oauth = SpotifyOAuth(
     client_id="d8c7c51196a445e688a7ed0840c23f19",  # Replace with your Spotify client ID
     client_secret="e5e2c5db36f143c7aca7dfad5401e77a",  # Replace with your Spotify client secret
-    redirect_uri="http://127.0.0.1:5000/callback",  # Replace with your redirect URI
+    redirect_uri="http://127.0.0.1:5000/callback",  # Add this to your application on the Spotify Developers Dashboard 
     scope="user-top-read"
 )
 
-# Setting up the Spotipy OAuth object
 def refresh_spotify_token():
-    token_info = session.get("token_info")
-    if not token_info:
-        return None  # No token in session, can't refresh
-    
-    if sp_oauth.is_token_expired(token_info):
-        token_info = sp_oauth.refresh_access_token(token_info["refresh_token"])
-        session["token_info"] = token_info    # Update session with the new token
-    
-    return token_info
+    # Load token from cache
+    token_info = sp_oauth.get_cached_token()
 
+    if not token_info or sp_oauth.is_token_expired(token_info):
+        try:
+            token_info = sp_oauth.refresh_access_token(token_info["refresh_token"])
+            sp_oauth.save_token_to_cache(token_info)  # Save refreshed token back to cache
+            session["token_info"] = token_info
+        except Exception as e:
+            print(f"Error refreshing token: {e}")
+            session.clear()
+            return None
+
+    return spotipy.Spotify(auth=token_info["access_token"])
 
 
 @app.route("/")
@@ -40,13 +45,15 @@ def welcome():        #Render the welcome page with a button to login to Spotify
 
 
 @app.route("/login")
-def login():                # Redirect the user to Spotify's authorization page to log in.
+def login():      # Redirect the user to Spotify's authorization page to log in.
+    session.clear()           
     auth_url = sp_oauth.get_authorize_url()
     return redirect(auth_url)
 
+# Handle Spotify's callback after user logs in and store the token in the session.
 
 @app.route("/callback")
-def callback():           # Handle Spotify's callback after user logs in and store the token in the session.
+def callback():           
     token_info = sp_oauth.get_access_token(request.args["code"])
     session["token_info"] = token_info
     return redirect(url_for("quiz"))                        # Redirect to the quiz page after login
@@ -65,12 +72,15 @@ def quiz():
     (last month, last 6 months, and all time). The data is then organized into quiz questions.
 
     """
-    token_info = refresh_spotify_token()  # Ensure token is valid or refreshed, otherwise it might not work 
+    print("Session before quiz:", session)
+    token_info = session.get("token_info")
     if not token_info:
         return redirect(url_for("login"))
-    
 
-    sp = spotipy.Spotify(auth=token_info["access_token"])     # Initialize the Spotipy client with the refreshed token.
+    sp = refresh_spotify_token() 
+    if sp is None:
+        return redirect(url_for("login"))    # Initialize the Spotipy client with the refreshed token.
+   
 
     # Fetch top tracks and artists for different time ranges using Spotify's API:
     

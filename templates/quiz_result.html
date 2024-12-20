@@ -49,9 +49,9 @@
     </ul>
     
     <!-- Display quiz score -->
-    <h3>Score: {{ score }} / 5</h3>
+    <h3>You got {{ score }} out of 5 right. Nice job!</h3>
 
-    <h2>Check out some more stats from your listening habits!</h2>
+    <h2>Curious about what else you've been listening to? Check out some more stats:</h2>
 
     <!-- Form to select time range for viewing listening stats -->
     <form method="POST">
@@ -67,7 +67,7 @@
     </form>
 
     <!-- Display top tracks, artists and albums based on selected time range -->
-    <h3>Top Tracks ({{ time_range_label }}):</h3>
+    <h3>Top Tracks of {{ time_range_label }}:</h3>
     <ul>
         {% for track in top_tracks %}
             <li>
@@ -81,7 +81,7 @@
         {% endfor %}
     </ul>
 
-    <h3>Top Artists ({{ time_range_label }}):</h3>
+    <h3>Top Artists of {{ time_range_label }}:</h3>
     <ul>
         {% for artist in top_artists %}
             <li>
@@ -95,7 +95,7 @@
         {% endfor %}
     </ul>
 
-    <h3>Top Albums ({{ time_range_label }}):</h3>
+    <h3>Top Albums of {{ time_range_label }}:</h3>
     <ul>
         {% for album in top_albums %}
             <li>
@@ -104,7 +104,7 @@
                         <img src="{{ album[2] }}" alt="Album image" width="100" style="margin-right: 15px;">
                     {% endif %}
                     <div>
-                        <strong>{{ album[0] }}</strong> by {{ album[1] }}
+                        <strong>{{ album[0] }}</strong> by  {{ album[1] }}
                     </div>
                 </div>
             </li>
