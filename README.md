@@ -179,11 +179,11 @@ Throughout the development of this project, several resources were utilized. Bel
 
 
 ## Screenshots for Work Flow
-![Welcome Page](assets/screenshots/welcome:.ong)
+- **Welcome Page**: 
+![Welcome Page](assets/welcome:.png)
 - **Quiz Page (`quiz.html`)**: 
-![Quiz Page](assets/screenshots/quiz1:.png)
-![Quiz Page](assets/screenshots/quiz2:.png)
+![Quiz Page](assets/quiz:1.png)
+![Quiz Page](assets/quiz:2.png)
 - **Results Page (`result.html`)**:
-![Results Page](assets/screenshots/results1:.png)
-![Results Page](assets/screenshots/results2:.png)
-![Results Page](assets/screenshots/results3:.png)
+![Results Page](assets/results:1.png)
+![Results Page](assets/results:3.png)
