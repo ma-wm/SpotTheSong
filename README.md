@@ -34,6 +34,7 @@ source venv/bin/activate   # On Windows, use venv\\Scripts\\activate
 ```bash
 pip install -r requirements.txt
 ```
+
 **PS:** Using the Spotify API requires credentials in their Spotify Developer Dashboard (`client_id`, `client_secret`). Because this application is in developers' mode, it is not possible to allow any user to access their date - they would have to be registered at my original application. For the purposes of these examination, the code already has my credentials so you can run it easily. The downside is that you will only see my Spotify's account data, even if you login with a different account. However. If you'd like to run the app locally with your own Spotify credentials and have access to your own data, follow these steps:
 - Visit the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications) and log into your Spotify account.
 - Create a new application and obtain your `client_id` and `client_secret`.
@@ -41,6 +42,7 @@ pip install -r requirements.txt
 - Replace my credentials on the code with yours with yours .
 
 **PS2:** In case you don't have an Spotify account or the login is not working, you can use mine (I will change the password later). It can be found in the end of the document, in the screenshot of the login page. 
+
 ## Usage
 
 ### Run the Application
@@ -114,6 +116,9 @@ Custom CSS for styling the application.
 
 - **Quiz Page (`quiz.html`)**: Displays quiz questions and options. Users select answers, and their responses are submitted to the `/quiz_result` endpoint.
 
+
+- **Quiz Page (`quiz.html`)**: Displays quiz questions and options. Users select answers, and their responses are submitted to the `/quiz_result` endpoint.
+
 - **Results Page (`result.html`)**: Displays the user's score and the correct answers.
 
 ### CSS Styling:
@@ -149,6 +154,7 @@ The CSS is designed to give the app a Spotify-inspired look with the brand's gre
 - **Data Accuracy**: 
   While this project strives to provide an accurate representation of user listening habits, the data may not perfectly match the exact "last year" timeframe due to the limitations of the Spotify API's available time ranges.
 
+
 - **Token**: Because this program relies on Spotify's API, we can have problems with fetching or refreshing the token, leading to issues with login with a different user from the credentials' owner.
 
 ## Resources
@@ -170,6 +176,7 @@ Throughout the development of this project, several resources were utilized. Bel
 
 4. **W3Schools**  
    [W3Schools](https://www.w3schools.com/) was a helpful resource for HTML, CSS, and JavaScript tutorials.
+
 
 ## Screenshots for Work Flow
 ![Welcome Page](assets/screenshots/welcome:.ong)
